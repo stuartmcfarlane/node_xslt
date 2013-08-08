@@ -50,8 +50,10 @@ using namespace v8;
  * the JavaScript environment.
  * See the 'posix.cpp' module for examples. */
 #define ARGC                           args.Length()
-#define ARG_COUNT(c)                   if ( args.Length() != c ) { \
+#define ARG_COUNT(c)                   if ( args.Length() != c) { \
                                        return ThrowException(String::New("Insufficient arguments")); } 
+#define ARG_COUNT_ASYNC(c)             if (! (args.Length() == c || (args.Length() == c+1 && args[c]->IsFunction()))) { \
+                                       throw std::string("Insufficient arguments"); } 
 #define ARG_BETWEEN(a,b)               if ( a <= args.Length() <= b ) {} 
 #define ARG_int(n,c)                   int n=(int)(args[c]->Int32Value())
 #define ARG_str(v,i)                   v8::String::AsciiValue v(args[i]);

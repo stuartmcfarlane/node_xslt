@@ -8,7 +8,8 @@
     "dependencies": {
     },
     "scripts": {
-        "preinstall": "node-gyp rebuild"
+        "preinstall": "node-gyp rebuild",
+        "test": "make test"
     },
     "description": "A simple XSLT package for node.js",
     "author": "Brian Suh <brian.j.suh@gmail.com>",
@@ -17,5 +18,9 @@
     {
         "type": "git",
         "url": "git://github.com/bahblah/node_xslt.git"
+    },
+    "devDependencies": {
+        "jasmine-node": "~1.11.0",
+        "mocha": "~1.12.0"
     }
 }
